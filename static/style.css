@@ -1,0 +1,310 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 40px;
+    background: linear-gradient(135deg, #ffe4ec, #ffb6c1, #ffc0cb);
+    background-attachment: fixed;
+    color: #4a4a4a;
+}
+
+h1, h2 {
+    text-align: center;
+    color: #d63384;
+}
+
+form {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    max-width: 500px;
+    margin: 40px auto;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+form:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 15px rgba(236, 64, 122, 0.25);
+}
+
+form input {
+    padding: 10px;
+    margin: 8px;
+    width: 80%;
+    border: 1px solid #f8bbd0;
+    border-radius: 10px;
+    transition: 0.3s;
+    outline: none;
+}
+
+form input:focus {
+    border-color: #ec407a;
+    box-shadow: 0 0 5px #f48fb1;
+}
+
+button {
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #ec407a, #f06292);
+    background-size: 200% 200%;
+    animation: gradientMove 3s ease infinite;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(236,64,122,0.3);
+    margin: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+button:hover {
+    background-color: #d81b60;
+    box-shadow: 0 6px 12px rgba(236,64,122,0.4);
+    transform: translateY(-2px);
+}
+
+button::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.5) 10%, transparent 10.01%);
+    background-size: 10px 10px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+button:hover::after {
+    opacity: 0.3;
+    animation: sparkle 2s linear infinite;
+}
+
+a.back-link {
+    display: inline-block;
+    margin-top: 20px;
+    color: #d63384;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+a.back-link:hover {
+    text-decoration: underline;
+    color: #ad1457;
+    transform: scale(1.1);
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 800px;
+    margin: 30px auto;
+    background-color: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(236, 64, 122, 0.15);
+    border: 2px solid #ffc1e3;
+    transition: box-shadow 0.3s;
+}
+
+table:hover {
+    box-shadow: 0 8px 18px rgba(236, 64, 122, 0.25);
+}
+
+th {
+    background-color: #f8bbd0;
+    color: #880e4f;
+    padding: 12px;
+    text-transform: uppercase;
+}
+
+td {
+    padding: 10px;
+    border-bottom: 1px solid #fce4ec;
+    text-align: center;
+}
+
+tr:hover {
+    background-color: #fff0f5;
+    transition: background-color 0.3s;
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes sparkle {
+    from { background-position: 0 0; }
+    to { background-position: 100px 100px; }
+}
+
+tr {
+    opacity: 0;
+    animation: fadeInUp 0.5s ease forwards;
+}
+@keyframes fadeInUp {
+    from { transform: translateY(10px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+h1 {
+    text-shadow: 0 0 10px #ff80ab, 0 0 20px #f48fb1;
+    letter-spacing: 1px;
+    animation: shimmer 3s infinite alternate;
+}
+
+@keyframes shimmer {
+    from { text-shadow: 0 0 5px #ffb6c1, 0 0 15px #ec407a; }
+    to { text-shadow: 0 0 15px #ff80ab, 0 0 25px #f06292; }
+}
+
+body::before, body::after {
+    content: "";
+    position: fixed;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background: radial-gradient(circle at center, #ffd6e0 0%, transparent 70%);
+    animation: floaty 10s infinite ease-in-out alternate;
+    z-index: -1;
+}
+
+body::after {
+    top: 60%;
+    left: 70%;
+    animation-delay: 3s;
+}
+
+body::before {
+    top: 10%;
+    left: 20%;
+}
+
+@keyframes floaty {
+    from { transform: translateY(0px) scale(1); opacity: 0.7; }
+    to { transform: translateY(-30px) scale(1.1); opacity: 0.9; }
+}
+
+@media (max-width: 600px) {
+    form input {
+        width: 90%;
+    }
+
+    table {
+        width: 95%;
+    }
+
+    button {
+        width: 90%;
+    }
+}
+
+.action-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.action-icons a {
+    font-size: 22px;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease;
+    padding: 8px 12px;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.edit-icon {
+    color: #d63384;
+    background-color: #ffe4ec;
+    box-shadow: 0 2px 5px rgba(214, 51, 132, 0.2);
+}
+
+.edit-icon:hover {
+    background-color: #ec407a;
+    color: white;
+    transform: scale(1.15);
+    box-shadow: 0 4px 10px rgba(214, 51, 132, 0.4);
+}
+
+.delete-icon {
+    color: #ad1457;
+    background-color: #ffd6e0;
+    box-shadow: 0 2px 5px rgba(173, 20, 87, 0.2);
+}
+
+.delete-icon:hover {
+    background-color: #f06292;
+    color: white;
+    transform: scale(1.15);
+    box-shadow: 0 4px 10px rgba(240, 98, 146, 0.4);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
+.fancy-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: 80px;
+    text-align: center;
+    color: #b30059;
+    margin-top: 40px;
+    text-shadow: 4px 4px 15px rgba(255, 182, 193, 0.6);
+    letter-spacing: 2px;
+    font-weight: normal;
+    animation: floatTitle 4s ease-in-out infinite;
+}
+
+@keyframes floatTitle {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+h2 {
+    text-align: center;
+    color: #ad1457;
+    font-size: 26px;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 4px rgba(255, 192, 203, 0.6);
+}
+
+.center-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0 10px 0;
+}
+
+.center-btn a {
+    text-decoration: none;
+}
+
+.center-btn button {
+    background: linear-gradient(135deg, #ec407a, #f06292);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 12px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    box-shadow: 0 5px 12px rgba(236, 64, 122, 0.3);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.center-btn button:hover {
+    background: linear-gradient(135deg, #d81b60, #ec407a);
+    transform: scale(1.08);
+    box-shadow: 0 8px 16px rgba(236, 64, 122, 0.4);
+}

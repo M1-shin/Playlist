@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Song | Music Playlist Manager</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Music Playlist Manager</h1>
+    <h2>Edit Song Details</h2>
+
+    <form action="/update/{{ song.id }}" method="POST">
+        <input type="text" name="title" value="{{ song.title }}" placeholder="Song Title" required>
+        <input type="text" name="artist" value="{{ song.artist }}" placeholder="Artist" required>
+        <input type="text" name="album" value="{{ song.album }}" placeholder="Album" required>
+        <br>
+        <button type="submit">Save Changes</button>
+        <a href="/" class="back-link">Back to Playlist</a>
+    </form>
+</body>
+</html>

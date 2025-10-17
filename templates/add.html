@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Song</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <h1 class="fancy-title">Add a New Song</h1>
+
+    <form action="{{ url_for('add_song') }}" method="POST">
+        <input type="text" name="title" placeholder="Song Title" required>
+        <input type="text" name="artist" placeholder="Artist" required>
+        <input type="text" name="album" placeholder="Album" required>
+        <button type="submit">Add Song</button>
+        <br>
+        <a href="{{ url_for('index') }}" class="back-link">Back to Playlist</a>
+    </form>
+
+</body>
+</html>

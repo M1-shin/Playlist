@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Music Playlist Manager</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1 class="fancy-title">Music Playlist Manager</h1>
+
+        <h2>My Playlist</h2>
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Artist</th>
+            <th>Album</th>
+            <th>⚙️</th>
+        </tr>
+        {% for song in songs %}
+        <tr>
+            <td>{{ song.title }}</td>
+            <td>{{ song.artist }}</td>
+            <td>{{ song.album }}</td>
+            <td class="action-icons">
+    <a href="/edit/{{ song.id }}" class="edit-icon" title="Edit Song">✏️</a>
+    <a href="/delete/{{ song.id }}" class="delete-icon" title="Delete Song" onclick="return confirm('Delete this song? 💔')">🗑️</a>
+            </td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="4" style="text-align:center;">No songs yet. Add one above!</td>
+        </tr>
+        {% endfor %}
+    </table>
+<br><br>
+
+<div class="center-btn">
+    <a href="{{ url_for('add_song') }}">
+        <button type="button">➕ Add Song</button>
+    </a>
+</div>
+
+</body>
+</html>
