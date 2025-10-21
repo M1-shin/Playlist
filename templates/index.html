@@ -9,7 +9,15 @@
 <body>
     <h1 class="fancy-title">Music Playlist Manager</h1>
 
+    <div style="max-width:900px;margin:10px auto;display:flex;justify-content:space-between;align-items:center;">
         <h2>My Playlist</h2>
+        <div>
+            <span style="font-weight:bold;color:#880e4f;margin-right:12px;">{{ user.username }}</span>
+            <a href="{{ url_for('share') }}" class="back-link" style="margin-right:8px;">Share Playlist</a>
+            <a href="{{ url_for('logout') }}" class="back-link">Logout</a>
+        </div>
+    </div>
+
     <table>
         <tr>
             <th>Title</th>
@@ -23,8 +31,8 @@
             <td>{{ song.artist }}</td>
             <td>{{ song.album }}</td>
             <td class="action-icons">
-    <a href="/edit/{{ song.id }}" class="edit-icon" title="Edit Song">✏️</a>
-    <a href="/delete/{{ song.id }}" class="delete-icon" title="Delete Song" onclick="return confirm('Delete this song? 💔')">🗑️</a>
+                <a href="/edit/{{ song.id }}" class="edit-icon" title="Edit Song">✏️</a>
+                <a href="/delete/{{ song.id }}" class="delete-icon" title="Delete Song" onclick="return confirm('Delete this song?')">🗑️</a>
             </td>
         </tr>
         {% else %}

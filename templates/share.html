@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Share Playlist</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1 class="fancy-title">Share Your Playlist</h1>
+
+    <div style="max-width:700px;margin:30px auto;text-align:center;">
+        <p style="font-size:16px;">Send this link to anyone you want to grant read-only access to your playlist:</p>
+        <div style="background:white;padding:16px;border-radius:12px;word-break:break-all;">
+            <input type="text" value="{{ share_link }}" readonly style="width:100%;border:none;outline:none;font-size:14px;">
+        </div>
+        <br>
+        <a href="{{ url_for('share_regenerate') }}"><button>Regenerate Link</button></a>
+        <br><br>
+        <a href="{{ url_for('index') }}" class="back-link">Back to Playlist</a>
+    </div>
+</body>
+</html>

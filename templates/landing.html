@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Music Playlist Manager</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1 class="fancy-title">Music Playlist Manager</h1>
+
+    <div style="max-width:700px;margin:30px auto;text-align:center;">
+        <h2>Welcome</h2>
+        <p style="font-size:18px;color:#6b2a4a;">
+            Your playlists are private by default. Please log in or register to create and manage your playlist.
+        </p>
+
+        <div class="center-btn">
+            <a href="{{ url_for('login') }}"><button>Log In</button></a>
+            <a href="{{ url_for('register') }}" style="margin-left:12px;"><button>Register</button></a>
+        </div>
+    </div>
+</body>
+</html>
