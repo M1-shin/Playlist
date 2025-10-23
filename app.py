@@ -81,17 +81,26 @@ def register():
 def login():
     if 'user_id' in session:
         return redirect(url_for('index'))
+
     if request.method == 'POST':
         username_or_email = request.form['username_or_email'].strip()
         password = request.form['password']
-        user = User.query.filter((User.username == username_or_email) | (User.email == username_or_email)).first()
-        if user and user.check_password(password):
-            session['user_id'] = user.id
-            session['username'] = user.username
-            flash(f"Welcome back, {user.username}!", "success")
-            return redirect(url_for('index'))
-        flash("Invalid credentials.", "danger")
-        return render_template('login.html')
+
+        user = User.query.filter(
+            (User.username == username_or_email) | (User.email == username_or_email)
+        ).first()
+
+        if user:
+            if user.check_password(password):
+                session['user_id'] = user.id
+                session['username'] = user.username
+                flash(f"Welcome back, {user.username}!", "success")
+                return redirect(url_for('index'))
+            else:
+                flash("Incorrect password. Please try again.", "danger")
+        else:
+            flash("No account found with that username or email.", "danger")
+        return redirect(url_for('login'))
     return render_template('login.html')
 
 @app.route('/logout')
@@ -118,7 +127,6 @@ def add_song():
         db.session.commit()
         flash("Song added to your playlist.", "success")
         return redirect(url_for("index"))
-
     return render_template("add.html")
 
 @app.route('/edit/<int:id>', methods=['GET', 'POST'])
@@ -139,9 +147,20 @@ def edit_song(id):
         return redirect(url_for('index'))
     return render_template('edit.html', song=song)
 
-@app.route('/delete/<int:id>')
+@app.route('/delete/<int:id>', methods=['GET'])
 @login_required
 def delete_song(id):
+    user = current_user()
+    song = Song.query.get_or_404(id)
+    if song.user_id != user.id:
+        flash("You are not allowed to delete that song.", "danger")
+        return redirect(url_for('index'))
+    # Show delete confirmation page instead of deleting right away
+    return render_template('delete.html', song=song)
+
+@app.route('/delete/<int:id>/confirm', methods=['POST'])
+@login_required
+def confirm_delete(id):
     user = current_user()
     song = Song.query.get_or_404(id)
     if song.user_id != user.id:

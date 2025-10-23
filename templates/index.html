@@ -32,7 +32,7 @@
             <td>{{ song.album }}</td>
             <td class="action-icons">
                 <a href="/edit/{{ song.id }}" class="edit-icon" title="Edit Song">✏️</a>
-                <a href="/delete/{{ song.id }}" class="delete-icon" title="Delete Song" onclick="return confirm('Delete this song?')">🗑️</a>
+                <a href="{{ url_for('delete_song', id=song.id) }}" class="delete-icon" title="Delete Song">🗑️</a>
             </td>
         </tr>
         {% else %}
@@ -48,7 +48,7 @@
         <button type="button">➕ Add Song</button>
     </a>
 </div>
-
+<footer>© 2025 Music Playlist Manager • SheenaShinaShin</footer>
 </body>
 </html>
 

@@ -2,23 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Music Playlist Manager</title>
+    <title>Delete Song • Music Playlist Manager</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="page-border"></div>
+
     <h1 class="fancy-title">Music Playlist Manager</h1>
 
-    <div class="landing-container">
-        <h2>Welcome</h2>
-        <p class="welcome-text">
-            Your playlists are private by default. Please log in or register to create and manage your playlist.
+    <div class="delete-container">
+        <h2>Confirm Deletion</h2>
+
+        <p class="delete-warning">
+            Are you sure you want to permanently delete this song?
         </p>
 
-        <div class="center-btn">
-            <a href="{{ url_for('login') }}"><button>Log In</button></a>
-            <a href="{{ url_for('register') }}"><button>Register</button></a>
+        <div class="delete-details">
+            <p><strong>Title:</strong> {{ song.title }}</p>
+            <p><strong>Artist:</strong> {{ song.artist }}</p>
+            <p><strong>Album:</strong> {{ song.album }}</p>
         </div>
+
+        <form method="POST" action="{{ url_for('confirm_delete', id=song.id) }}">
+            <div class="center-btn">
+                <button type="submit" class="delete-btn">Yes, Delete</button>
+                <a href="{{ url_for('index') }}"><button type="button" class="cancel-btn">Cancel</button></a>
+            </div>
+        </form>
     </div>
 
     <div class="music-notes">
