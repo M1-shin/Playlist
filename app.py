@@ -155,7 +155,6 @@ def delete_song(id):
     if song.user_id != user.id:
         flash("You are not allowed to delete that song.", "danger")
         return redirect(url_for('index'))
-    # Show delete confirmation page instead of deleting right away
     return render_template('delete.html', song=song)
 
 @app.route('/delete/<int:id>/confirm', methods=['POST'])
@@ -190,7 +189,6 @@ def update(id):
 @login_required
 def share():
     user = current_user()
-    # regenerate a share token if one doesn't exist (shouldn't happen) or user requests new token
     link = url_for('shared_playlist', token=user.share_token, _external=True)
     return render_template('share.html', share_link=link, user=user)
 
@@ -207,7 +205,6 @@ def share_regenerate():
 def shared_playlist(token):
     user = User.query.filter_by(share_token=token).first_or_404()
     songs = Song.query.filter_by(user_id=user.id).all()
-    # Render a read-only view of that user's playlist
     return render_template('shared.html', songs=songs, owner=user)
 
 if __name__ == '__main__':
