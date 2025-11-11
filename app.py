@@ -104,10 +104,18 @@ def login():
     return render_template('login.html')
 
 @app.route('/logout')
+@login_required
 def logout():
+    user = current_user()
+    return render_template('confirmlogout.html', user=user)
+
+@app.route('/logout/confirm', methods=['POST'])
+@login_required
+def confirm_logout():
     session.clear()
     flash("You've been logged out.", "info")
     return redirect(url_for('login'))
+
 
 @app.route("/add_song", methods=["GET", "POST"])
 @login_required

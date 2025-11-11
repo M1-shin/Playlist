@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Logout • Music Playlist Manager</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="page-border"></div>
+
+    <h1 class="fancy-title">Music Playlist Manager</h1>
+
+    <div class="delete-container">
+        <h2>Confirm Logout</h2>
+
+        <p class="delete-warning">
+            Are you sure you want to log out, {{ user.username }}?
+        </p>
+
+        <form method="POST" action="{{ url_for('confirm_logout') }}">
+            <div class="center-btn">
+                <button type="submit" class="delete-btn">Yes, Log Out</button>
+                <a href="{{ url_for('index') }}"><button type="button" class="cancel-btn">Cancel</button></a>
+            </div>
+        </form>
+    </div>
+
+    <div class="music-notes">
+        <span class="note" style="left:10%;animation-delay:0s;">♪</span>
+        <span class="note" style="left:25%;animation-delay:2s;">♩</span>
+        <span class="note" style="left:45%;animation-delay:4s;">♫</span>
+        <span class="note" style="left:65%;animation-delay:6s;">♬</span>
+        <span class="note" style="left:80%;animation-delay:8s;">♩</span>
+    </div>
+
+    <footer>© 2025 Music Playlist Manager • SheenaShinaShin</footer>
+</body>
+</html>

@@ -535,3 +535,85 @@ body::after {
     from { opacity: 0; transform: translateY(-10px); }
     to { opacity: 1; transform: translateY(0); }
 }
+
+form, table, .landing-container, .delete-container {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(8px);
+    border: 2px solid rgba(255, 182, 193, 0.4);
+}
+
+.music-notes .note {
+    position: fixed;
+    bottom: -40px;
+    font-size: 26px;
+    color: #d63384;
+    animation: floatUp 7s linear infinite;
+    opacity: 0.7;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0) rotate(0deg); }
+    50% { opacity: 1; }
+    100% { transform: translateY(-150vh) rotate(360deg); opacity: 0; }
+}
+
+tr {
+    animation: fade-in 0.5s ease forwards;
+    opacity: 0;
+}
+@keyframes fade-in {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+button {
+    position: relative;
+    overflow: hidden;
+}
+button::before {
+    content: "";
+    position: absolute;
+    top: 0; left: -70%;
+    width: 50%; height: 100%;
+    background: rgba(255,255,255,0.45);
+    transform: skewX(-25deg);
+    animation: shine 2.5s infinite;
+}
+@keyframes shine {
+    0% { left: -60%; }
+    100% { left: 120%; }
+}
+
+a.back-link {
+    transition: 0.3s;
+}
+a.back-link:hover {
+    transform: scale(1.15) translateY(-3px);
+    text-shadow: 0 2px 8px rgba(255, 158, 188, 0.8);
+}
+
+.fancy-title {
+    text-shadow: 0 0 12px rgba(255, 192, 203, 0.7),
+                 0 0 28px rgba(240, 98, 146, 0.8);
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: #ffe4ec;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+    background: #ec407a;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #d81b60;
+}
+
+table tr:hover {
+    background-color: #ffe9f3;
+    box-shadow: inset 0 0 12px rgba(255, 167, 194, 0.4);
+}
+
